@@ -1,0 +1,12 @@
+<div class="company-card">
+  <h3>{{ company.name }}</h3>
+  <p><strong>Ticker:</strong> {{ company.stock_ticker }}</p>
+  <p><strong>Exchange:</strong> {{ company.exchange }}</p>
+  <p><strong>ISIN:</strong> {{ company.isin }}</p>
+  <p>
+    <strong>Website:</strong>
+    <a [href]="company.website_url" target="_blank">{{
+      company.website_url
+    }}</a>
+  </p>
+</div>

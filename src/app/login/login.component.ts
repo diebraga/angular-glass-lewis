@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+
+  constructor(private router: Router) {}
 
   get isFormValid(): boolean {
     return !!this.email && !!this.password;
@@ -20,5 +23,6 @@ export class LoginComponent {
     };
 
     console.log(body);
+    this.router.navigate(['/main']);
   }
 }
