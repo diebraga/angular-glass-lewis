@@ -53,24 +53,22 @@
       class="form-control"
       required
     />
-    <div *ngIf="password && confirmPassword && !passwordsMatch" class="error">
-      Passwords do not match!
-    </div>
   </div>
   <div class="form-group">
-    <label for="isAdmin">Admin:</label>
-    <input
-      type="checkbox"
-      id="isAdmin"
-      name="isAdmin"
-      [(ngModel)]="isAdmin"
-      class="form-control"
-    />
+    <label for="isAdmin">
+      <input
+        type="checkbox"
+        id="isAdmin"
+        name="isAdmin"
+        [(ngModel)]="isAdmin"
+      />
+      Is Admin
+    </label>
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!isFormValid">
     Register
   </button>
   <div class="login-link">
-    <a routerLink="/login">Already have an account? Login</a>
+    <a href="/login">Already have an account? Login</a>
   </div>
 </form>

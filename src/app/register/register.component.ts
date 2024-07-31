@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +15,11 @@ export class RegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   isAdmin: boolean = false;
+
+  constructor(
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   get passwordsMatch(): boolean {
     return this.password === this.confirmPassword;
@@ -33,6 +41,10 @@ export class RegisterComponent {
       return;
     }
 
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
     const registerData = {
       email: this.email,
       password: this.password,
@@ -41,6 +53,20 @@ export class RegisterComponent {
       isAdmin: this.isAdmin,
     };
 
-    console.log(registerData);
+    this.http
+      .post(`${environment.apiUrl}/api/signup`, registerData, { headers })
+      .subscribe({
+        next: (response) => {
+          alert('Registration successful');
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          if (error.status === 409) {
+            alert('User already exists!');
+          } else {
+            console.error('There was an error!', error);
+          }
+        },
+      });
   }
 }
