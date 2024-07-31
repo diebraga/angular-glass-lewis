@@ -9,12 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'main', component: MainComponent },
+  { path: 'main/:id', component: CompanyDetailComponent },
 ];
 
 @NgModule({
@@ -24,6 +26,7 @@ const routes: Routes = [
     RegisterComponent,
     MainComponent,
     CompanyCardComponent,
+    CompanyDetailComponent,
   ],
   imports: [
     BrowserModule,

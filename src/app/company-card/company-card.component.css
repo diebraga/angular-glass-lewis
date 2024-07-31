@@ -1,3 +1,9 @@
+.company-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .company-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -5,6 +11,12 @@
   margin: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.company-card:hover {
+  background-color: #f1f1f1;
 }
 
 .company-card h3 {

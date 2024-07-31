@@ -1,13 +1,15 @@
-<div class="company-card">
-  <h3>{{ company.name }}</h3>
-  <p><strong>ID:</strong> {{ company.id }}</p>
-  <p><strong>Ticker:</strong> {{ company.stock_ticker }}</p>
-  <p><strong>Exchange:</strong> {{ company.exchange }}</p>
-  <p><strong>ISIN:</strong> {{ company.isin }}</p>
-  <p>
-    <strong>Website:</strong>
-    <a [href]="company.website_url" target="_blank">{{
-      company.website_url
-    }}</a>
-  </p>
-</div>
+<a [routerLink]="['/main', company.id]" class="company-card-link">
+  <div class="company-card">
+    <h3>{{ company.name }}</h3>
+    <p><strong>ID:</strong> {{ company.id }}</p>
+    <p><strong>Ticker:</strong> {{ company.stock_ticker }}</p>
+    <p><strong>Exchange:</strong> {{ company.exchange }}</p>
+    <p><strong>ISIN:</strong> {{ company.isin }}</p>
+    <p>
+      <strong>Website:</strong>
+      <a [href]="company.website_url" target="_blank">{{
+        company.website_url
+      }}</a>
+    </p>
+  </div>
+</a>

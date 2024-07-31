@@ -1,0 +1,62 @@
+.company-detail {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
