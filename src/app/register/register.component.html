@@ -1,0 +1,76 @@
+<form (ngSubmit)="onSubmit()" class="register-form">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="name"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="surname">Surname:</label>
+    <input
+      type="text"
+      id="surname"
+      name="surname"
+      [(ngModel)]="surname"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="email"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="password"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password:</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      [(ngModel)]="confirmPassword"
+      class="form-control"
+      required
+    />
+    <div *ngIf="password && confirmPassword && !passwordsMatch" class="error">
+      Passwords do not match!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="isAdmin">Admin:</label>
+    <input
+      type="checkbox"
+      id="isAdmin"
+      name="isAdmin"
+      [(ngModel)]="isAdmin"
+      class="form-control"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!isFormValid">
+    Register
+  </button>
+  <div class="login-link">
+    <a routerLink="/login">Already have an account? Login</a>
+  </div>
+</form>

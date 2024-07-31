@@ -21,7 +21,9 @@
       required
     />
   </div>
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!isFormValid">
+    Login
+  </button>
   <div class="register-link">
     <a href="/register">Don't have an account? Register</a>
   </div>
