@@ -1,26 +1,37 @@
-<div class="company-detail">
-  <h2>Company Details</h2>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="id">ID:</label>
-      <input
-        type="text"
-        id="id"
-        [value]="company?.id"
-        readonly
-        class="form-control not-allowed"
-      />
+<form (ngSubmit)="onSubmit()" #companyForm="ngForm" class="company-detail-form">
+  <div class="form-group" *ngFor="let field of fields">
+    <label [for]="field">{{ field | titlecase }}:</label>
+    <input
+      type="text"
+      [id]="field"
+      [(ngModel)]="company[field]"
+      name="{{ field }}"
+      class="form-control"
+      [attr.maxLength]="getMaxLength(field)"
+      required
+      (input)="checkForChanges()"
+      #control="ngModel"
+    />
+    <div *ngIf="control.invalid && control.dirty">
+      <small class="error" *ngIf="control.errors?.['required']">
+        {{ field | titlecase }} is required
+      </small>
+      <small class="error" *ngIf="control.errors?.['maxlength']">
+        {{ field | titlecase }} cannot exceed
+        {{ getMaxLength(field) }} characters
+      </small>
     </div>
-    <div class="form-group" *ngFor="let field of fields">
-      <label [for]="field">{{ field | titlecase }}:</label>
-      <input
-        type="text"
-        [id]="field"
-        [(ngModel)]="company[field]"
-        [name]="field"
-        class="form-control"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-  </form>
-</div>
+  </div>
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="companyForm.invalid || !hasChanges"
+    >
+      Update
+    </button>
+    <button class="btn btn-danger" (click)="goBack()" style="margin-top: 10px">
+      Back
+    </button>
+  </div>
+</form>

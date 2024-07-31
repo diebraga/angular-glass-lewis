@@ -1,7 +1,7 @@
-.company-detail {
+.company-detail-form {
   max-width: 600px;
-  margin: 50px auto;
-  padding: 30px;
+  margin: 20px auto;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #ffffff;
@@ -9,42 +9,37 @@
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-weight: bold;
-  color: #333;
+}
+
+.form-control,
+.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 .form-control {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  transition: border-color 0.3s;
 }
 
-.form-control:focus {
-  border-color: #007bff;
-  outline: none;
+.error {
+  color: red;
+  font-size: 12px;
 }
 
 .btn {
   display: block;
-  width: 100%;
-  padding: 12px;
-  font-size: 18px;
-  font-weight: bold;
   text-align: center;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  box-sizing: border-box;
   transition: background-color 0.3s;
 }
 
@@ -53,10 +48,27 @@
   color: #fff;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-.not-allowed {
-    cursor: not-allowed;
+.back-button {
+  width: auto;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
 }

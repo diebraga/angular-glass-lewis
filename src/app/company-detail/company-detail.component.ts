@@ -10,6 +10,8 @@ import { environment } from '../../environments/environment.prod';
 })
 export class CompanyDetailComponent implements OnInit {
   company: any = {};
+  originalCompany: any = {};
+  hasChanges: boolean = false;
   fields: string[] = [
     'name',
     'stock_ticker',
@@ -47,7 +49,10 @@ export class CompanyDetailComponent implements OnInit {
     this.http
       .get<any>(`${environment.apiUrl}/api/company/${id}`, { headers })
       .subscribe({
-        next: (data) => (this.company = data),
+        next: (data) => {
+          this.company = data;
+          this.originalCompany = { ...data };
+        },
         error: (error) => {
           if (error.status === 401) {
             alert('Unauthorized');
@@ -57,6 +62,27 @@ export class CompanyDetailComponent implements OnInit {
           }
         },
       });
+  }
+
+  getMaxLength(field: string): number {
+    switch (field) {
+      case 'name':
+      case 'stock_ticker':
+      case 'exchange':
+        return 10;
+      case 'isin':
+        return 11;
+      case 'website_url':
+        return 15;
+      default:
+        return 100;
+    }
+  }
+
+  checkForChanges(): void {
+    this.hasChanges = Object.keys(this.company).some(
+      (key) => this.company[key] !== this.originalCompany[key]
+    );
   }
 
   onSubmit(): void {
@@ -74,7 +100,6 @@ export class CompanyDetailComponent implements OnInit {
       .put(`${environment.apiUrl}/api/company/update`, body, { headers })
       .subscribe({
         next: (response) => {
-          console.log('Company updated successfully', response);
           alert('Company updated successfully');
         },
         error: (error) => {
@@ -86,5 +111,9 @@ export class CompanyDetailComponent implements OnInit {
           }
         },
       });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/main']);
   }
 }
