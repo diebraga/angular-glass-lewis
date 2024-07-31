@@ -70,11 +70,16 @@ export class MainComponent implements OnInit {
         headers,
       })
       .subscribe({
-        next: (data) => (this.companies = [data]),
+        next: (data) => {
+          this.companies = [data];
+          this.searchId = '';
+        },
         error: (error) => {
           if (error.status === 401) {
             alert('Unauthorized');
             this.router.navigate(['/login']);
+          } else if (error.status === 404) {
+            alert('Not found!');
           } else {
             console.error('There was an error!', error);
           }
@@ -94,11 +99,16 @@ export class MainComponent implements OnInit {
         { headers }
       )
       .subscribe({
-        next: (data) => (this.companies = [data]),
+        next: (data) => {
+          this.companies = [data];
+          this.searchIsin = '';
+        },
         error: (error) => {
           if (error.status === 401) {
             alert('Unauthorized');
             this.router.navigate(['/login']);
+          } else if (error.status === 404) {
+            alert('Not found!');
           } else {
             console.error('There was an error!', error);
           }
