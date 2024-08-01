@@ -14,7 +14,6 @@ export class RegisterComponent {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  isAdmin: boolean = false;
 
   constructor(
     private router: Router,
@@ -50,7 +49,6 @@ export class RegisterComponent {
       password: this.password,
       name: this.name,
       surname: this.surname,
-      isAdmin: this.isAdmin,
     };
 
     this.http
