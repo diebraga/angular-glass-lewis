@@ -13,3 +13,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `npm cypress:open` to run cypress end2end
+
+<img width="731" alt="image" src="https://github.com/user-attachments/assets/0c8a352e-f12e-4e0d-bc73-94c3b20956db">
+
+## App in production
+
+<a href="https://angular-glass-lewis-7uovh8dts-diebragas-projects.vercel.app/login" target="_blank">Click Here</a>
