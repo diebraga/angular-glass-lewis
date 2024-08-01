@@ -10,8 +10,6 @@ import { environment } from '../../environments/environment.prod';
 })
 export class CompanyDetailComponent implements OnInit {
   company: any = {};
-  originalCompany: any = {};
-  hasChanges: boolean = false;
   fields: string[] = [
     'name',
     'stock_ticker',
@@ -19,6 +17,8 @@ export class CompanyDetailComponent implements OnInit {
     'isin',
     'website_url',
   ];
+  originalCompany: any = {};
+  hasChanges: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -79,12 +79,6 @@ export class CompanyDetailComponent implements OnInit {
     }
   }
 
-  checkForChanges(): void {
-    this.hasChanges = Object.keys(this.company).some(
-      (key) => this.company[key] !== this.originalCompany[key]
-    );
-  }
-
   onSubmit(): void {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -101,6 +95,8 @@ export class CompanyDetailComponent implements OnInit {
       .subscribe({
         next: (response) => {
           alert('Company updated successfully');
+          this.originalCompany = { ...this.company };
+          this.hasChanges = false;
         },
         error: (error) => {
           if (error.status === 401) {
@@ -115,5 +111,10 @@ export class CompanyDetailComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/main']);
+  }
+
+  checkForChanges(): void {
+    this.hasChanges =
+      JSON.stringify(this.company) !== JSON.stringify(this.originalCompany);
   }
 }

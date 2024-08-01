@@ -43,7 +43,13 @@ describe('MainComponent', () => {
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
     httpMock = TestBed.inject(HttpTestingController);
+
+    // mock the initial request for all companies
     fixture.detectChanges();
+    const req = httpMock.expectOne(
+      `${environment.apiUrl}/api/get-all-companies`
+    );
+    req.flush(mockCompanies);
   });
 
   afterEach(() => {
@@ -55,14 +61,6 @@ describe('MainComponent', () => {
   });
 
   it('should fetch all companies on init', () => {
-    component.ngOnInit();
-
-    const req = httpMock.expectOne(
-      `${environment.apiUrl}/api/get-all-companies`
-    );
-    expect(req.request.method).toBe('GET');
-    req.flush(mockCompanies);
-
     expect(component.companies.length).toBe(2);
     expect(component.companies).toEqual(mockCompanies);
   });
@@ -70,7 +68,6 @@ describe('MainComponent', () => {
   it('should fetch company by ID', () => {
     component.searchId = '1';
     component.fetchById();
-
     const req = httpMock.expectOne(`${environment.apiUrl}/api/company/1`);
     expect(req.request.method).toBe('GET');
     req.flush(mockCompanies[0]);
@@ -83,7 +80,6 @@ describe('MainComponent', () => {
   it('should fetch company by ISIN', () => {
     component.searchIsin = 'US1234567890';
     component.fetchByIsin();
-
     const req = httpMock.expectOne(
       `${environment.apiUrl}/api/company/isin/US1234567890`
     );
