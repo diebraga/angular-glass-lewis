@@ -16,7 +16,7 @@ export class RegisterComponent {
   confirmPassword: string = '';
 
   constructor(
-    private router: Router,
+    public router: Router,
     private http: HttpClient
   ) {}
 

@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    public router: Router
   ) {}
 
   ngOnInit(): void {
