@@ -1,4 +1,9 @@
-<form (ngSubmit)="onSubmit()" #companyForm="ngForm" class="company-detail-form">
+<form
+  (ngSubmit)="onSubmit()"
+  #companyForm="ngForm"
+  class="company-detail-form"
+  id="form-detail"
+>
   <div class="form-group" *ngFor="let field of fields">
     <label [for]="field">{{ field | titlecase }}:</label>
     <input

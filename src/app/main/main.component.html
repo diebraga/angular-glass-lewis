@@ -1,14 +1,36 @@
 <div class="header">
-  <button (click)="fetchAll()" class="btn btn-primary">All</button>
+  <button (click)="fetchAll()" class="btn btn-primary" id="all-btn">All</button>
   <div class="search-group">
     <label for="searchId">Get by ID:</label>
-    <input type="text" id="searchId" [(ngModel)]="searchId" class="form-control" />
-    <button (click)="fetchById()" class="btn btn-primary">Search</button>
+    <input
+      type="text"
+      id="searchId"
+      [(ngModel)]="searchId"
+      class="form-control"
+    />
+    <button
+      (click)="fetchById()"
+      class="btn btn-primary"
+      id="searchId-search-button"
+    >
+      Search
+    </button>
   </div>
   <div class="search-group">
     <label for="searchIsin">Get by ISIN:</label>
-    <input type="text" id="searchIsin" [(ngModel)]="searchIsin" class="form-control" />
-    <button (click)="fetchByIsin()" class="btn btn-primary">Search</button>
+    <input
+      type="text"
+      id="searchIsin"
+      [(ngModel)]="searchIsin"
+      class="form-control"
+    />
+    <button
+      (click)="fetchByIsin()"
+      class="btn btn-primary"
+      id="searchIsin-search-button"
+    >
+      Search
+    </button>
   </div>
 </div>
 <div class="main">
